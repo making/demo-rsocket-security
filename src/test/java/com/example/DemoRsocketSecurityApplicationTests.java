@@ -31,8 +31,7 @@ class DemoRsocketSecurityApplicationTests {
 				.rsocketStrategies((builder) -> builder.encoder(new SimpleAuthenticationEncoder()))
 				.setupMetadata(credentials, MimeTypeUtils.parseMimeType("message/x.rsocket.authentication.v0"))
 				.dataMimeType(MimeTypeUtils.APPLICATION_JSON)
-				.connectTcp("localhost", this.port)
-				.block();
+				.tcp("localhost", this.port);
 
 		String message = requester.route("hello")
 				.data(Mono.just("World"))
@@ -46,8 +45,7 @@ class DemoRsocketSecurityApplicationTests {
 	public void messageWhenNotAuthenticatedThenError() {
 		RSocketRequester requester = this.requester
 				.dataMimeType(MimeTypeUtils.APPLICATION_JSON)
-				.connectTcp("localhost", this.port)
-				.block();
+				.tcp("localhost", this.port);
 
 		assertThatThrownBy(() -> requester.route("hello")
 				.data(Mono.empty())

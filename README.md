@@ -2,7 +2,7 @@
 ./mvnw clean package -DskipTests
 ```
 
-Install [`rsc`](https://github.com/making) 0.6.0+ .
+Install [`rsc`](https://github.com/making) 0.7.0+ .
 
 ## Simple Authentication
 
